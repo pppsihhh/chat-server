@@ -3,19 +3,21 @@ package academy.prog;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import jakarta.servlet.http.*;
 
 public class GetListServlet extends HttpServlet {
-	
+	private WhoIsOnline ol = WhoIsOnline.getWio();
 	private MessageList msgList = MessageList.getInstance();
 
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String fromStr = req.getParameter("from");
 		String fromName = req.getParameter("name");
+		ol.addName(fromName, new Date());
 		int from = 0;
 		try {
 			from = Integer.parseInt(fromStr);

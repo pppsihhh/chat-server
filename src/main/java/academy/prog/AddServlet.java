@@ -8,9 +8,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class AddServlet extends HttpServlet {
-
 	private MessageList msgList = MessageList.getInstance();
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		byte[] buf = requestBodyToArray(req);
